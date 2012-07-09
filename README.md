@@ -26,6 +26,7 @@ Why?
 ----
 
 I have two major frustrations:
+
 1.   If you want use an "MVC" framework,  most of them require that you use
      their object model.  This frustrates me.  I just want to know when data has changed.
 2.   Listening to changes from multiple async updates and performing actions on these
