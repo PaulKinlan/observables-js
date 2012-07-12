@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+	<title>Observer JS</title>
+	<link href='http://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		body{
+			font-family: 'Actor', sans-serif;
+		}
+		#dynamicblock{
+			border: 1px solid #999;
+			padding:10px;
+			width:400px;
+		}
+
+		pre{
+			background-color: #F8F8F8;
+			border: 1px solid #CCC;
+			font-size: 13px;
+			line-height: 19px;
+			overflow: auto;
+			padding: 6px 10px;
+			border-radius: 3px;
+			display: block;
+		}
+		code{
+			font-weight: bolder;
+		}
+		pre code{
+			font-size: 12px;
+			font-family: Consolas,Menlo,"Liberation Mono",Courier,monospace;
+			text-align: left;
+			font-weight: normal;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="main">
+			<h1>Observer JS</h1>
+			<p>A simple Observer pattern for your object model.</p>
+
+			<h2>Simple Example</h2>
+			<pre><code>var a = <span id="value_of_a">10</span>;
+var _a_observer = new Observable("a", this, function(newVal){ 
+	document.getElementById('value_of_a').innerHTML = newVal;
+});</code></pre>
+
+			<p>To check the variable value is observed, in the chrome console type <code>a = 100;</code>. You will see the <code>var a = 40;</code> is updated to <code>var a = 100;</code></p>
+
+			<h2>More complex example</h2>
+
+			<pre><code>var model = {
+  "location": { "lat": 0, "lng": 0  } ,
+  "heading": 123,
+  "target": { "lat": 0, "lng": 0 }
+};
+
+var _locationObserver = new Observable("location", model);
+var _headingObserver = new Observable("heading", model);
+var _targetObserver = new Observable("target", model);
+
+_locationObserver.addChangeListener(function(newVal, oldVal) {
+  console.log('_locationObserver.addChangeListener', newVal, oldVal);
+  alert('Location Updated');
+});
+		</code></pre>
+	<p>Now you can trigger the change event by updating the value of location, heading or target property inside model object. <code>Try model.location = {"lat": -44, "lng": 55.5}</code></p>
+
+
+	</div>
+	<script type="text/javascript" src="observable.js"></script>
+	<script type="text/javascript">
+   var model = {
+		  "location": { "lat": 0, "lng": 0  } ,
+		  "heading": 123,
+		  "target": { "lat": 0, "lng": 0 }
+		};
+
+		a = 10;
+
+		var _locationObserver = new Observable("location", model);
+		var _headingObserver = new Observable("heading", model);
+		var _targetObserver = new Observable("target", model);
+
+		var _a_observer = new Observable("a", this, function(newVal){ 
+			document.getElementById('value_of_a').innerHTML = newVal;
+		});
+
+		_locationObserver.addChangeListener(function(newVal, oldVal) {
+		  console.log('_locationObserver.addChangeListener', newVal, oldVal);
+		  alert('Location Updated');
+		});
+
+		_a_observer.addChangeListener(function(newVal, oldVal) {
+			console.log('_a_observer.addChangeListener', newVal, oldVal);
+		});
+	</script>
+</body>
+</html>

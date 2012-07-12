@@ -22,6 +22,12 @@ Instant Gratification
 
     model.location = { "lat": 1, "lng": 2 }; 
 
+    // Inline callback function
+    var a = 10;
+    var _a_observer = new Observable("a", this, function(newVal){ 
+      // document.getElementById('value_of_a').innerHTML = newVal;
+    });
+
 Why?
 ----
 
@@ -63,3 +69,7 @@ observed object by setting up a 'getter' and 'setter'  for the property name
 and caching the value of the actual value.
 
 *Note* tests still need to be don if the property is already a getter or setter.  
+
+TODO
+----
+- Write unit tests
