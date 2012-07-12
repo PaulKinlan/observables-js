@@ -22,6 +22,12 @@ Instant Gratification
 
     model.location = { "lat": 1, "lng": 2 }; 
 
+    // Inline callback function
+    var a = 10;
+    var _a_observer = new Observable("a", this, function(newVal){ 
+      // document.getElementById('value_of_a').innerHTML = newVal;
+    });
+
 Why?
 ----
 
