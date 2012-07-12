@@ -20,7 +20,7 @@ Instant Gratification
       // Wheeee.  We get notifications of changes
     });
 
-    _locationObserver = { "lat": 1, "lng": 2 }; 
+    model.location = { "lat": 1, "lng": 2 }; 
 
 Why?
 ----
